@@ -12,7 +12,20 @@ module.exports = {
     new HtmlWebpackPlugin({template: './src/index.html'})
   ],
   module: {
-    rules: [{ test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" }]
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader',
+        ],
+      },
+      { 
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: "babel-loader"
+      }
+    ]
   },
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
